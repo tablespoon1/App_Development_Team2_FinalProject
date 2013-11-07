@@ -1,0 +1,976 @@
+EDGE Diagram File
+Version 4.13
+
+## Globals Section:
+
+X -152
+Y -349
+Scale 93
+PosterRows 1
+PosterCols 1
+Color1 255,255,255
+Color2 192,192,192
+Color3 130,130,130
+Color4 0,0,0
+Color5 0,255,255
+Color6 0,0,255
+Color7 0,0,160
+Color8 128,0,128
+Color9 255,128,0
+Color10 255,0,0
+Color11 128,0,64
+Color12 128,64,0
+Color13 0,255,0
+Color14 0,128,0
+Color15 128,128,255
+Color16 205,114,203
+GridX 32
+GridY 32
+SnapX 32
+SnapY 32
+SnapConPtsCentersEdges TRUE
+ShadowColor 130,130,130
+ShadowX 5
+ShadowY 5
+ShowGrid TRUE
+AlignToGrid TRUE
+AlignToGridConPts FALSE
+AttachMode 1
+SBarWidth 108
+SBarFigCols 2
+SBarLblCols 1
+SBarConCols 2
+SBarFigHeight 28
+SBarLblHeight 32
+SBarConHeight 20
+Parent ""
+LargeDropMenus FALSE
+TranspBMPs TRUE
+TranspColor 255,255,255
+LastEnd "ER opt many"
+LastEndLen 43
+EnableConPts TRUE
+ConPointMarks 0
+CornerRadius 16
+FigMarginMode 0
+FigMarginTop 12
+FigMarginBottom 12
+FigMarginLeft 12
+FigMarginRight 12
+Template "General Purpose Diagram.EDG"
+TypeSize 8
+TypeFace "Arial"
+ConnectorJogs FALSE
+ConnectorJogRadius 18
+JunctionDots FALSE
+FigLblPrimarySector 8
+SelfReferenceRadius 64
+OversizeTextRect FALSE
+LineSpacingMode 0
+LineSpacingValue 0
+
+DevMode 212
+{
+466F7848696C6C205072696E7465720000000000000000000000000000000000
+00040104940040000367000602000100F604FA02000001000B01580201000100
+5802040000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000007010000020000000000000000000000010040004D53554402034850
+204C617365724A6574203650000000000000000000000000000000000000E401
+0000000000001D0100000000040064000A000000
+}
+
+DevNames 72
+{
+080011002100010077696E73706F6F6C00466F7848696C6C205072696E746572
+004C50543A5053304535442D3100000000000000000000000000000000000000
+00006500FC487100
+}
+
+Preview 1348
+{
+FC424DF6A20600FF360300FF280300FF700300FF7C0300FD0100180900FA1F0D
+00001F0D0A007FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF3BFF33007FFF7FFF1CFF
+030012FF0F0012FF03007FFF7FFF19FF030033FF03007FFF7FFF1CFF33007FFF
+7FFF4CFF06007FFF7FFF52FF06007FFF7FFF52FF06007FFF7FFF52FF06007FFF
+7FFF52FF03007FFF7FFF46FF39007FFF7FFF19FF030033FF03007FFF7FFF0DFF
+0F0012FF090018FF03007FFF4DFF330003FF09000CFF030033FF03007FFF4AFF
+030012FF0F0012FF030015FF39007FFF4AFF030033FF03002DFF06007FFF68FF
+330033FF03007FFF7FFF4FFF03007FFF7FFF4FFF03007FFF7FFF4FFF030075FF
+33007FFF26FF030003FF120003FF060003FF15003CFF030009FF0C0003FF1200
+09FF03007FFF23FF030072FF030033FF03007FFF23FF030075FF33007FFF26FF
+03007FFF26FF09007FFF20FF03007FFF2FFF09007FFF17FF03007FFF38FF0600
+3CFF060003FF060003FF030003FF090030FF09007FFF2FFF3C0045FF39007FFF
+17FF03000FFF030003FF0C0012FF4E000CFF060003FF0F000FFF03007FFF17FF
+030033FF060003FF03001BFF030021FF030033FF03007FFF17FF390024FF0300
+21FF39007FFF17FF090057FF030039FF03000CFF06007FFF1AFF060060FF0300
+39FF030012FF03007FFF14FF030066FF030039FF030015FF060063FF300063FF
+030039FF03001BFF03005DFF03000FFF0F0012FF030063FF030036FF03001EFF
+060057FF030030FF030063FF030036FF030024FF030057FF30007FFF20FF0300
+27FF06007FFF59FF210027FF030027FF21007FFF35FF090021FF09001EFF0300
+1EFF090021FF09007FFF29FF03000FFF030006FF090012FF03001BFF03001BFF
+03000FFF120012FF03007FFF29FF090021FF09001EFF03001EFF090021FF0900
+7FFF35FF210027FF030027FF21007FFF7FFF07FF03007FFF7FFF4FFF03007FFF
+7FFF46FF21007FFF7FFF28FF090021FF09007FFF7FFF1CFF030012FF0F0012FF
+03007FFF7FFF1CFF090021FF09007FFF7FFF28FF21007FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF51FF030003FF03007FFF53FF060003FF0C00
+03FF060003FF030006FF030006FF030009FF090006FF030003FF030006FF0900
+03FF060006FF0C0003FF030006FF030003FF06007FFF35FF030009FF030003FF
+060003FF060003FF060003FF0F0006FF030006FF0C0009FF030009FF030003FF
+030003FF030003FF060006FF030003FF030003FF06007FFF35FF03000CFF0300
+03FF030003FF090003FF030006FF030006FF030006FF03000CFF03000CFF0300
+09FF030003FF030006FF0C0003FF030003FF060003FF03007FFF38FF060039FF
+090006FF090006FF060006FF03007FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF
+7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF4AFF
+FE000000
+}
+
+## Graphics Section:
+
+## Figure Symbols Section:
+
+FigureSymbol "ER entity"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  TextBox >50,>50,<950,<950
+  Fill
+  {
+    Rect 0,0,1000,1000
+  }
+  Outline
+  {
+    Rect 0,0,1000,1000
+  }
+}
+
+FigureSymbol "ER relation"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  OversizeText TRUE
+  TextBox 200,200,800,800
+  Fill
+  {
+    Polygon 5 500,0 1000,500 500,1000 0,500 500,0
+  }
+  Outline
+  {
+    Polyline 5 500,0 1000,500 500,1000 0,500 500,0
+  }
+  Hot 5 500,0 1000,500 500,1000 0,500 500,0
+}
+
+FigureSymbol "ER attribute"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  TextBox 50,50,950,950
+  Fill
+  {
+    Ellipse 0,0,1000,1000
+  }
+  Outline
+  {
+    Ellipse 0,0,1000,1000
+  }
+  Hot 17 599,1000 783,924 924,783 1000,599 1000,402 924,218 783,77 599,1-
+   402,1 218,77 77,218 1,402 1,599 77,783 218,924 402,1000-
+   599,1000
+}
+
+FigureSymbol "ER entity2"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  TextBox >50,>50,<950,<950
+  Fill
+  {
+    Rect >100,0,<900,1000
+    Rect 0,>100,1000,<900
+    Ellipse 0,0,>200,>200
+    Ellipse <800,0,1000,>200
+    Ellipse <800,<800,1000,1000
+    Ellipse 0,<800,>200,1000
+  }
+  Outline
+  {
+    Arc 0,0,>200,>200 >100,0 0,>100
+    Line >100,0 <900,0
+    Arc <800,0,1000,>200 1000,>100 <900,0
+    Line 1000,>100 1000,<900
+    Arc <800,<800,1000,1000 <900,1000 1000,<900
+    Line >100,1000 <900,1000
+    Arc 0,<800,>200,1000 0,<900 >100,1000
+    Line 0,>100 0,<900
+  }
+  MiniOutline
+  {
+    Arc 0,0,>500,>500 >250,0 0,>250
+    Line >250,0 <750,0
+    Arc <500,0,1000,>500 1000,>250 <750,0
+    Line 1000,>250 1000,<750
+    Arc <500,<500,1000,1000 <750,1000 1000,<750
+    Line >250,1000 <750,1000
+    Arc 0,<500,>500,1000 0,<750 >250,1000
+    Line 0,>250 0,<750
+  }
+  Hot 21 0,>85 >11,>55 >29,>29 >55,>11 >85,0 <916,0 <946,>11 <972,>29-
+   <990,>55 1000,>85 <1000,<916 <990,<946 <972,<972 <946,<990 <916,1000 >85,1000-
+   >55,<990 >29,<972 >11,<946 0,<916 0,>85
+}
+
+FigureSymbol "ER relation2"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  OversizeText TRUE
+  TextBox 125,250,875,750
+  Fill
+  {
+    Ellipse 400,0,600,200
+    Ellipse 800,400,1000,600
+    Ellipse 400,800,600,1000
+    Ellipse 0,400,200,600
+    Polygon 9 571,29 971,429 971,571 571,971 429,971 29,571 29,429 429,29-
+     571,29
+  }
+  Outline
+  {
+    Arc 400,0,600,200 600,0 390,0
+    Line 571,29 971,429
+    Arc 800,400,1000,600 1000,600 1000,390
+    Line 971,571 571,971
+    Arc 400,800,600,1000 400,1000 610,1000
+    Line 429,971 29,571
+    Arc 0,400,200,600 0,400 0,610
+    Line 29,429 429,29
+  }
+  MiniOutline
+  {
+    Arc 300,0,700,400 700,0 100,0
+    Line 640,60 940,360
+    Arc 600,300,1000,700 1000,700 1000,100
+    Line 940,640 640,940
+    Arc 300,600,700,1000 300,1000 900,1000
+    Line 340,940 60,640
+    Arc 0,300,400,700 0,300 0,900
+    Line 60,360 360,60
+  }
+  Hot 13 500,0 571,29 971,429 1000,500 971,571 571,971 500,1000 429,971-
+   29,571 0,500 29,429 429,29 500,0
+}
+
+FigureSymbol "ER attribute mult"
+{
+  FixedAspect FALSE
+  Height 0
+  Width 0
+  TextBox >200,>200,<800,<800
+  Fill
+  {
+    Ellipse 0,0,1000,1000
+  }
+  Outline
+  {
+    Ellipse 0,0,1000,1000
+    Ellipse >50,>50,<950,<950
+  }
+  MiniOutline
+  {
+    Ellipse 0,0,1000,1000
+    Ellipse 200,200,800,800
+  }
+  Hot 17 599,1000 783,924 924,783 1000,599 1000,402 924,218 783,77 599,1-
+   402,1 218,77 77,218 1,402 1,599 77,783 218,924 402,1000-
+   599,1000
+}
+
+## End Symbols Section:
+
+EndSymbol "ER mand single"
+{
+  Outline
+  {
+    Line 832,334 832,666
+    Line 666,334 666,666
+  }
+}
+
+EndSymbol "ER mand many"
+{
+  Outline
+  {
+    Line 832,334 832,666
+    Line 500,500 666,500
+    Line 500,334 666,500
+    Line 500,666 666,500
+  }
+}
+
+EndSymbol "ER many"
+{
+  Outline
+  {
+    Line 500,500 666,500
+    Line 500,334 666,500
+    Line 500,666 666,500
+  }
+}
+
+EndSymbol "ER single"
+{
+  Outline
+  {
+    Line 666,334 666,666
+  }
+}
+
+EndSymbol "ER opt single"
+{
+  Outline
+  {
+    Line 666,334 666,666
+    Ellipse 832,417,1000,583
+  }
+}
+
+EndSymbol "ER opt many"
+{
+  Outline
+  {
+    Ellipse 832,416,1000,584
+    Line 500,500 666,500
+    Line 500,334 666,500
+    Line 500,666 666,500
+  }
+}
+
+## Figure Styles Section:
+
+FigureStyle "Label"
+{
+  Label TRUE
+  Height 64
+  Width 128
+  Description "An annotation or comment"
+  TextFormat 0x0044
+  Behavior 0x010241E1
+  Symbol "lbl"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Title"
+{
+  Label TRUE
+  Height 64
+  Width 128
+  Description "A heading or title"
+  TextFormat 0x0022
+  Behavior 0x010241D1
+  Symbol "lbl"
+  TypeSize 18
+  TypeWeight 700
+  TypeFace "Arial"
+}
+
+FigureStyle "Entity"
+{
+  HasButton TRUE
+  Height 64
+  Width 256
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER entity"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Entity 2"
+{
+  HasButton TRUE
+  Height 128
+  Width 256
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER entity2"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Relation"
+{
+  HasButton TRUE
+  Height 128
+  Width 256
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER relation"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Relation 2"
+{
+  HasButton TRUE
+  Height 128
+  Width 128
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER relation2"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Attribute"
+{
+  HasButton TRUE
+  Height 64
+  Width 256
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "Attribute Multiple"
+{
+  HasButton TRUE
+  Height 64
+  Width 256
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute mult"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+FigureStyle "derived"
+{
+  Height 64
+  Width 256
+  BorderWidth 3
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "null"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+## Connector Styles Section:
+
+ConnectorStyle "Relation"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Dashed"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  PenStyle 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Mandatory Single"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER mand single"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Single (dashed)"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER single"
+  End1Length 18
+  End2Length 43
+  PenStyle 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Mandatory Many"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER mand many"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Many (dashed)"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER many"
+  End1Length 18
+  End2Length 43
+  PenStyle 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Optional Single"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER opt single"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Single"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER single"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Optional Many"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER opt many"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+ConnectorStyle "Many"
+{
+  HasButton TRUE
+  End1 "null"
+  End2 "ER many"
+  End1Length 18
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+## Figures & Connectors Section:
+
+Figure 1
+{
+  Style "Entity"
+  Text "STUDENT"
+  Bounds 416,480,672,544
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER entity"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 2
+{
+  Style "Entity"
+  Text "FACULTY"
+  Bounds 992,704,1248,768
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER entity"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 3
+{
+  Style "Attribute"
+  Text "Grade"
+  Bounds 736,320,992,384
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 4
+{
+  Style "Attribute"
+  Text "Name"
+  Bounds 1024,224,1280,288
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 5
+{
+  Style "Attribute"
+  Text "Number"
+  Bounds 1248,320,1504,384
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 6
+{
+  Style "Attribute"
+  Text "FacSSN"
+  Bounds 704,832,960,896
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 7
+{
+  Style "Attribute"
+  Text "StudentSSN"
+  Bounds 128,576,384,640
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 8
+{
+  Style "Attribute"
+  Text "Name"
+  Bounds 160,384,416,448
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Connector 9
+{
+  Style "Relation"
+  Figure1 1
+  Figure2 7
+  EndPoint1 448,544
+  EndPoint2 333,582
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Connector 10
+{
+  Style "Relation"
+  Figure1 1
+  Figure2 8
+  EndPoint1 458,480
+  EndPoint2 360,443
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Figure 11
+{
+  Style "Attribute"
+  Text "Name"
+  Bounds 640,672,896,736
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER attribute"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Connector 12
+{
+  Style "Relation"
+  Figure1 2
+  Figure2 11
+  EndPoint1 992,724
+  EndPoint2 888,714
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Figure 13
+{
+  Style "Entity"
+  Text "COURSES"
+  Bounds 992,480,1248,544
+  BorderWidth 2
+  TextFormat 0x0022
+  Behavior 0x01024E12
+  Symbol "ER entity"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Connector 14
+{
+  Style "Mandatory Many"
+  Figure1 1
+  Figure2 15
+  EndPoint1 672,512
+  EndPoint2 832,512
+  SuppressEnd1 FALSE
+  SuppressEnd2 TRUE
+  End1 "ER mand many"
+  End2 "ER opt many"
+  End1Length 43
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+Figure 15
+{
+  Text ""
+  Bounds 825,505,840,520
+  FillColor 0,0,0
+  BorderWidth 0
+  BindToStyle FALSE
+  TextFormat 0x0000
+  Behavior 0x00327A12
+  Symbol "null"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Connector 16
+{
+  Style "Mandatory Many"
+  Figure1 15
+  Figure2 13
+  EndPoint1 832,512
+  EndPoint2 992,512
+  SuppressEnd1 TRUE
+  SuppressEnd2 FALSE
+  End1 "ER mand many"
+  End2 "ER opt many"
+  End1Length 43
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+Figure 17
+{
+  Label TRUE
+  Style "Title"
+  Text "Courses E-R Diagram"
+  Bounds 368,100,1028,175
+  TextFormat 0x0022
+  Behavior 0x002241D3
+  Symbol "lbl"
+  TypeSize 18
+  TypeWeight 700
+  TypeFace "Arial"
+}
+
+Figure 18
+{
+  Label TRUE
+  Style "Label"
+  Text "enrolls in/has"
+  Bounds 730,531,894,563
+  TextFormat 0x0044
+  Behavior 0x010241E1
+  Symbol "lbl"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Figure 19
+{
+  Label TRUE
+  Style "Label"
+  Text "taught by/teaches"
+  Bounds 1139,604,1360,636
+  TextFormat 0x0044
+  Behavior 0x010241E1
+  Symbol "lbl"
+  TypeSize 8
+  TypeFace "Arial"
+}
+
+Connector 20
+{
+  Style "Optional Many"
+  Figure1 2
+  Figure2 13
+  EndPoint1 1120,704
+  EndPoint2 1120,544
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "ER single"
+  End2 "ER opt many"
+  End1Length 43
+  End2Length 43
+  LineWidth 2
+  EndBorderWidth 2
+  End2FillColor 252,252,252
+  Behavior 0x00000000
+}
+
+Connector 21
+{
+  Style "Relation"
+  Figure1 15
+  Figure2 3
+  EndPoint1 832,512
+  EndPoint2 857,384
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Connector 22
+{
+  Style "Relation"
+  Figure1 -1
+  Figure2 13
+  EndPoint1 1120,288
+  EndPoint2 1120,480
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Connector 23
+{
+  Style "Relation"
+  Figure1 5
+  Figure2 13
+  EndPoint1 1328,381
+  EndPoint2 1172,480
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+Connector 24
+{
+  Style "Relation"
+  Figure1 6
+  Figure2 2
+  EndPoint1 894,836
+  EndPoint2 1048,768
+  SuppressEnd1 FALSE
+  SuppressEnd2 FALSE
+  End1 "null"
+  End2 "null"
+  End1Length 18
+  End2Length 18
+  LineWidth 2
+  EndBorderWidth 2
+  Behavior 0x00000000
+}
+
+## Staples Section:
