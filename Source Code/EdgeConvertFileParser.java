@@ -134,6 +134,7 @@ public class EdgeConvertFileParser {
       for (int cIndex = 0; cIndex < connectors.length; cIndex++) {
          endPoint1 = connectors[cIndex].getEndPoint1();
          endPoint2 = connectors[cIndex].getEndPoint2();
+         fieldIndex = -1;
          for (int fIndex = 0; fIndex < fields.length; fIndex++) { //search fields array for endpoints
             if (endPoint1 == fields[fIndex].getNumFigure()) { //found endPoint1 in fields array
                connectors[cIndex].setIsEP1Field(true); //set appropriate flag
@@ -174,7 +175,7 @@ public class EdgeConvertFileParser {
             }
          }
          
-         if (fields[fieldIndex].getTableID() == 0) { //field has not been assigned to a table yet
+         if (fieldIndex >=0 && fields[fieldIndex].getTableID() == 0) { //field has not been assigned to a table yet
             if (connectors[cIndex].getIsEP1Table()) { //endpoint1 is the table
                tables[table1Index].addNativeField(fields[fieldIndex].getNumFigure()); //add to the appropriate table's field list
                fields[fieldIndex].setTableID(tables[table1Index].getNumFigure()); //tell the field what table it belongs to
@@ -182,7 +183,7 @@ public class EdgeConvertFileParser {
                tables[table2Index].addNativeField(fields[fieldIndex].getNumFigure()); //add to the appropriate table's field list
                fields[fieldIndex].setTableID(tables[table2Index].getNumFigure()); //tell the field what table it belongs to
             }
-         } else { //field has already been assigned to a table
+         } else if (fieldIndex >=0) { //field has already been assigned to a table
             JOptionPane.showMessageDialog(null, "The attribute " + fields[fieldIndex].getName() + " is connected to multiple tables.\nPlease resolve this and try again.");
             EdgeConvertGUI.setReadSuccess(false); //this tells GUI not to populate JList components
             break; //stop processing list of Connectors

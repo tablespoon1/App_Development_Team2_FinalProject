@@ -5,7 +5,6 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.*;
 
-// this is a test
 public class CreateDDLMySQL extends EdgeConvertCreateDDL {
 
    protected String databaseName;
