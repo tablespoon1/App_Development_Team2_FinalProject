@@ -134,7 +134,7 @@ public class EdgeConvertGUI {
       jmiDTOptionsOutputLocation.addActionListener(menuListener);
       jmiDTOptionsShowProducts = new JMenuItem("Show Database Products Available");
       jmiDTOptionsShowProducts.setMnemonic(KeyEvent.VK_H);
-      jmiDTOptionsShowProducts.setEnabled(false);
+      //jmiDTOptionsShowProducts.setEnabled(false);
       jmiDTOptionsShowProducts.addActionListener(menuListener);
       jmDTOptions.add(jmiDTOptionsOutputLocation);
       jmDTOptions.add(jmiDTOptionsShowProducts);
@@ -1266,7 +1266,13 @@ public class EdgeConvertGUI {
          }
 
          if ((ae.getSource() == jmiDTOptionsShowProducts) || (ae.getSource() == jmiDROptionsShowProducts)) {
-            JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
+            /* Addition: Check to make sure directory with output definition files is set */
+            if (outputDir == null) { // if no output definition direcotry set
+               JOptionPane.showMessageDialog(null, "You have not selected a path that contains valid output definition files yet.\nPlease select a path now.");
+               setOutputDir();
+            } else { // display available DDL statements
+               JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
+            }
          }
          
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
