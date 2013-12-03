@@ -960,6 +960,10 @@ public class EdgeConvertGUI {
       return sb.toString();
    }
    
+   /*
+      Method which grabs Output class definition files (e.g. For converting input to mySQL, Oracle, etc.)
+      and stores the names and class files in arrays for later reference
+   */
    private void getOutputClasses() {
       File[] resultFiles;
       Class resultClass = null;
@@ -967,29 +971,29 @@ public class EdgeConvertGUI {
       Class[] paramTypesNull = {};
       Constructor conResultClass;
       Object[] args = {tables, fields};
-      Object objOutput = null;
+      Object objOutput = null; // the constructor class which holds the constructor for the selected CreateDDL file for conversion to given database type (mySQL, XML, etc.)
 
       resultFiles = outputDir.listFiles();
       alProductNames.clear();
       alSubclasses.clear();
       try {
-         for (int i = 0; i < resultFiles.length; i++) {
+         for (int i = 0; i < resultFiles.length; i++) { // loop through all files in directory
             if (!resultFiles[i].getName().endsWith(".class")) {
                continue; //ignore all files that are not .class files
             }
             resultClass = Class.forName(resultFiles[i].getName().substring(0, resultFiles[i].getName().lastIndexOf(".")));
             if (resultClass.getSuperclass().getName().equals("EdgeConvertCreateDDL")) { //only interested in classes that extend EdgeConvertCreateDDL
-               if (parseFile == null && saveFile == null) {
-                  conResultClass = resultClass.getConstructor(paramTypesNull);
-                  objOutput = conResultClass.newInstance(null);
-               } else {
-                  conResultClass = resultClass.getConstructor(paramTypes);
-                  objOutput = conResultClass.newInstance(args);
+               if (parseFile == null && saveFile == null) { // if input (parseFile) and output (saveFile) files undefined
+                  conResultClass = resultClass.getConstructor(paramTypesNull); // Make constructor class equal target class's constructor w/ null paramters
+                  objOutput = conResultClass.newInstance(null); // object output equals a new instance of the given CreateDDL class w/o args
+               } else { // if input (parseFile) and output (saveFile) files ARE DEFINED
+                  conResultClass = resultClass.getConstructor(paramTypes); // Make constructor class equal target class's constructor w/ given param types
+                  objOutput = conResultClass.newInstance(args); // object output equals a new instance of the given CreateDDL class w/ args
                }
-               alSubclasses.add(objOutput);
+               alSubclasses.add(objOutput); // add constructor to array of subclasses to array
                Method getProductName = resultClass.getMethod("getProductName", null);
                String productName = (String)getProductName.invoke(objOutput, null);
-               alProductNames.add(productName);
+               alProductNames.add(productName); // add product name of corresponding CreateDDL class to array
             }
          }
       } catch (InstantiationException ie) {
@@ -1004,12 +1008,15 @@ public class EdgeConvertGUI {
          ite.printStackTrace();
       }
       if (alProductNames.size() > 0 && alSubclasses.size() > 0) { //do not recreate productName and objSubClasses arrays if the new path is empty of valid files
+         // recreate productName and objSubClasses arrays from alProductNames and alSubclasses arrays, respectively
          productNames = (String[])alProductNames.toArray(new String[alProductNames.size()]);
-         objSubclasses = (Object[])alSubclasses.toArray(new Object[alSubclasses.size()]);
+         objSubclasses = (Object[])alSubclasses.toArray(new Object[alSubclasses.size()]); 
       }
    }
    
+   /* Prompt user to select output file from precomposed list of available CreateDDL classes */
    private String getSQLStatements() {
+//       System.out.println("getSQLStatements()");
       String strSQLString = "";
       String response = (String)JOptionPane.showInputDialog(
                     null,
@@ -1020,18 +1027,20 @@ public class EdgeConvertGUI {
                     productNames,
                     null);
                     
-      if (response == null) {
+      if (response == null) { // If user cancelled window
+//          System.out.println("EdgeConvertGUI.CANCELLED");
          return EdgeConvertGUI.CANCELLED;
       }
       
       int selected;
-      for (selected = 0; selected < productNames.length; selected++) {
+      for (selected = 0; selected < productNames.length; selected++) { // loop through until productName matching user selection is found
          if (response.equals(productNames[selected])) {
+//            System.out.println("Breaking on: "+selected);
             break;
          }
       }
 
-      try {
+      try { // 
          Class selectedSubclass = objSubclasses[selected].getClass();
          Method getSQLString = selectedSubclass.getMethod("getSQLString", null);
          Method getDatabaseName = selectedSubclass.getMethod("getDatabaseName", null);
@@ -1139,13 +1148,17 @@ public class EdgeConvertGUI {
       }
    }
    
+   /*
+      Button Listener linked to the 'Create DDLButton' which converts the input file to a selected output format (e.g. MySQL, Oracle, etc.)
+   */
    class CreateDDLButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent ae) {
-         while (outputDir == null) {
+         while (outputDir == null) { // while no valid output directory is set
             JOptionPane.showMessageDialog(null, "You have not selected a path that contains valid output definition files yet.\nPlease select a path now.");
             setOutputDir();
          }
          getOutputClasses(); //in case outputDir was set before a file was loaded and EdgeTable/EdgeField objects created
+         
          sqlString = getSQLStatements();
          if (sqlString.equals(EdgeConvertGUI.CANCELLED)) {
             return;
@@ -1168,7 +1181,7 @@ public class EdgeConvertGUI {
             jfcEdge.addChoosableFileFilter(effEdge);
             returnVal = jfcEdge.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-               parseFile = jfcEdge.getSelectedFile();
+               parseFile = jfcEdge.getSelectedFile(); // file to parse (input) is the selected file
                ecfp = new EdgeConvertFileParser(parseFile);
                tables = ecfp.getEdgeTables();
                for (int i = 0; i < tables.length; i++) {
