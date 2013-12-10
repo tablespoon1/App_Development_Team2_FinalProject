@@ -5,6 +5,9 @@ public class EdgeConnector {
    private String endStyle1, endStyle2;
    private boolean isEP1Field, isEP2Field, isEP1Table, isEP2Table;
       
+   /* 
+      Class which handles identifying and converting relations between tables to appropriate output format
+   */
    public EdgeConnector(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numConnector = Integer.parseInt(st.nextToken());
