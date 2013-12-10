@@ -56,6 +56,16 @@ public class EdgeConvertGUI {
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
    static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout;
    
+   /* REFACTORING: Adding another menu item to support help system*/
+   static JMenuItem jmiDTHelpSystem;
+   
+   /* There is no need to declare these menu items twice for two separate views
+    * within the GUI. Instead, there should be a general main panel that gets
+    * refreshed or rewdrawn when changing from the tables view or relations view.
+    * In doing so, the JMenu bar will always be shown, thus eliminating the new
+    * for a clone.
+    */
+   
    //Define Relations screen objects
    static JFrame jfDR;
    static JPanel jpDRBottom, jpDRCenter, jpDRCenter1, jpDRCenter2, jpDRCenter3, jpDRCenter4;
@@ -142,6 +152,13 @@ public class EdgeConvertGUI {
       jmDTHelp = new JMenu("Help");
       jmDTHelp.setMnemonic(KeyEvent.VK_H);
       jmbDTMenuBar.add(jmDTHelp);
+      
+      /* REFACTORING: Adding another menu item to support help system*/
+      jmiDTHelpSystem = new JMenuItem("Help System");
+      jmiDTHelpSystem.setMnemonic(KeyEvent.VK_HELP);
+      jmiDTHelpSystem.addActionListener(menuListener);
+      jmDTHelp.add(jmiDTHelpDemo); 
+      
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDTHelpAbout.addActionListener(menuListener);
@@ -1285,6 +1302,15 @@ public class EdgeConvertGUI {
                setOutputDir();
             } else { // display available DDL statements
                JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
+            }
+         }
+         
+         if ((ae.getSource() == jmiDTHelpSystem) || (ae.getSource() == jmiDTHelpSystem)) {
+            try {
+                Desktop.getDesktop().open( new File("C:\\Users\\Stephan\\Desktop\\AppDev Demo Help\\AppDev Demo Help.chm"));
+             }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Cannot find Help Demo .CHM file.");
             }
          }
          
