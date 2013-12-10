@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<Title>Refactorization</Title>
+</HEAD>
+<BODY>
+
+<p>Global modifications: Original source code contains minimal documentation. Upon refactoring code, javadocs should be declared above all method signatures, especially upon those whose functionality is a core behavior of the system.</p>
+
+<p>Error Handling: Removed system.exit(0) calls when an error is caught. Calling system.exit(0) is a bad practice as it shuts down the entire Java VM. Also, having the program close every time a user tries to open an invalid file is impractical.</p>
+
+<p>praseSaveFile(): Remove derogatory comments from method description. Additionally, modify the function to delimit on key words/terms instead of reliance on whitespacing. This will set a standard to how a file should be formatted.</p>
+
+<p>openFile(): Reduce coupling in order to make the code easier to test as well as reduce the risk that the program will not function properly. Induce separation of concerns and abstract methods calls (parseEdgeFile(), makeArrays(), and resolveConnectors()) such that they are not all reliant and dependent of each other.</p>
+
+<p>Reversibility: Allow for additional types of files (such as .xml) to be opened by the program. This allows for increased functionality without having to change the code much should unforeseen circumstances arise.</p>
+
+</BODY>
+</HTML>

@@ -157,7 +157,7 @@ public class EdgeConvertGUI {
       jmiDTHelpSystem = new JMenuItem("Help System");
       jmiDTHelpSystem.setMnemonic(KeyEvent.VK_HELP);
       jmiDTHelpSystem.addActionListener(menuListener);
-      jmDTHelp.add(jmiDTHelpDemo); 
+      jmDTHelp.add(jmiDTHelpSystem); 
       
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
@@ -1307,7 +1307,7 @@ public class EdgeConvertGUI {
          
          if ((ae.getSource() == jmiDTHelpSystem) || (ae.getSource() == jmiDTHelpSystem)) {
             try {
-                Desktop.getDesktop().open( new File("C:\\Users\\Stephan\\Desktop\\AppDev Demo Help\\AppDev Demo Help.chm"));
+                Desktop.getDesktop().open( new File("./help_system/help_demo_file.chm"));
              }
             catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Cannot find Help Demo .CHM file.");
