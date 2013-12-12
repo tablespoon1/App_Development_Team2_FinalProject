@@ -5,7 +5,7 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.*;
 
-public class CreateDDLMySQL extends EdgeConvertCreateDDL {
+public class CreateDDLMySQL extends ConvertCreateDDL {
 
    protected String databaseName;
    //this array is for determining how MySQL refers to datatypes
@@ -145,4 +145,4 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
       return sb.toString();
    }
    
-}//EdgeConvertCreateDDL
+}//ConvertCreateDDL

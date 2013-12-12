@@ -27,7 +27,7 @@ public class EdgeConvertGUI {
    EdgeWindowListener edgeWindowListener;
    CreateDDLButtonListener createDDLListener;
    private EdgeConvertFileParser ecfp;
-   private EdgeConvertCreateDDL eccd;
+   private ConvertCreateDDL ccd;
    private static PrintWriter pw;
    private EdgeTable[] tables; //master copy of EdgeTable objects
    private EdgeField[] fields; //master copy of EdgeField objects
@@ -999,7 +999,7 @@ public class EdgeConvertGUI {
                continue; //ignore all files that are not .class files
             }
             resultClass = Class.forName(resultFiles[i].getName().substring(0, resultFiles[i].getName().lastIndexOf(".")));
-            if (resultClass.getSuperclass().getName().equals("EdgeConvertCreateDDL")) { //only interested in classes that extend EdgeConvertCreateDDL
+            if (resultClass.getSuperclass().getName().equals("ConvertCreateDDL")) { //only interested in classes that extend ConvertCreateDDL
                if (parseFile == null && saveFile == null) { // if input (parseFile) and output (saveFile) files undefined
                   conResultClass = resultClass.getConstructor(paramTypesNull); // Make constructor class equal target class's constructor w/ null paramters
                   objOutput = conResultClass.newInstance(null); // object output equals a new instance of the given CreateDDL class w/o args
