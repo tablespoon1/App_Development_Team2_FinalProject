@@ -7,6 +7,10 @@ import java.io.*;
 import java.util.*;
 import java.lang.reflect.*;
 
+/*
+ *  GUI class, which is also the central class for the program, 
+ *  bringing together most other classes.
+ */
 public class EdgeConvertGUI {
    
    public static final int HORIZ_SIZE = 635;
@@ -78,6 +82,9 @@ public class EdgeConvertGUI {
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
    static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout;
    
+   /*
+    * Constructor instantiates listerns and displays the GUI.
+    */
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
       radioListener = new EdgeRadioButtonListener();
@@ -86,6 +93,10 @@ public class EdgeConvertGUI {
       this.showGUI();
    } // EdgeConvertGUI.EdgeConvertGUI()
    
+   /*
+    *  Method which constructs the GUI's various parts, setting
+    *  the Look and Feel.
+    */
    public void showGUI() {
       try {
          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //use the OS native LAF, as opposed to default Java LAF
@@ -95,7 +106,10 @@ public class EdgeConvertGUI {
       createDTScreen();
       createDRScreen();
    } //showGUI()
-
+   
+   /*
+    *  Method which creates the 'Define Tables' screen.
+    */
    public void createDTScreen() {//create Define Tables screen
       jfDT = new JFrame(DEFINE_TABLES);
       jfDT.setLocation(HORIZ_LOC, VERT_LOC);
@@ -489,6 +503,9 @@ public class EdgeConvertGUI {
       jfDT.validate();
    } //createDTScreen
 
+   /*
+    *  Method which creates the 'Define Relations' Screen.
+    */
    public void createDRScreen() {
       //create Define Relations screen
       jfDR = new JFrame(DEFINE_RELATIONS);
@@ -741,6 +758,10 @@ public class EdgeConvertGUI {
       jfDR.getContentPane().add(jpDRBottom, BorderLayout.SOUTH);
    } //createDRScreen
    
+   /*
+      Getters and Setters
+   */
+   
    public static void setReadSuccess(boolean value) {
       readSuccess = value;
    }
@@ -823,6 +844,9 @@ public class EdgeConvertGUI {
       return "";
    }
    
+   /*
+      Method which enables buttons
+   */
    private void enableControls() {
       for (int i = 0; i < strDataType.length; i++) {
          jrbDataType[i].setEnabled(true);
@@ -833,6 +857,9 @@ public class EdgeConvertGUI {
       jbDTDefaultValue.setEnabled(true);
    }
    
+   /*
+      Method which disables buttons
+   */
    private void disableControls() {
       for (int i = 0; i < strDataType.length; i++) {
          jrbDataType[i].setEnabled(false);
@@ -865,6 +892,10 @@ public class EdgeConvertGUI {
       dlmDRFieldsTablesRelatedTo.clear();
    }
    
+   /*
+      Method which populates GUI lists with table names and
+      field values for each one
+   */
    private void populateLists() {
       if (readSuccess) {
          jfDT.setVisible(true);
@@ -883,6 +914,10 @@ public class EdgeConvertGUI {
       readSuccess = true;
    }
    
+   /*
+    *  Method which handles users prompts for the front-end
+    *  when saving a file
+    */
    private void saveAs() {
       int returnVal;
       jfcEdge.addChoosableFileFilter(effSave);
@@ -910,6 +945,9 @@ public class EdgeConvertGUI {
       writeSave();
    }
    
+   /*
+      Method which write to the selected file, after saveAs() function is completed
+   */
    private void writeSave() {
       if (saveFile != null) {
          try {
@@ -935,6 +973,15 @@ public class EdgeConvertGUI {
       }
    }
 
+   /*
+      Method allows users to move to and define the directory
+      containing files that possess the classes which will
+      convert to a databases stored in standard format to
+      a given DDL such as MySQL. Searching that directory
+      for valid files and retrn an error message if none are
+      found.
+      
+   */
    private void setOutputDir() {
       int returnVal;
       outputDirOld = outputDir;
@@ -1031,7 +1078,9 @@ public class EdgeConvertGUI {
       }
    }
    
-   /* Prompt user to select output file from precomposed list of available CreateDDL classes */
+   /* 
+      Prompt user to select output file from precomposed list of available CreateDDL classes 
+    */
    private String getSQLStatements() {
 //       System.out.println("getSQLStatements()");
       String strSQLString = "";
@@ -1074,6 +1123,12 @@ public class EdgeConvertGUI {
       return strSQLString;
    }
 
+   /*
+      Method which write the SQL statements to the
+      output file.
+      
+      @param output The SQL statement 
+   */
    private void writeSQL(String output) {
       jfcEdge.resetChoosableFileFilters();
       String str;
@@ -1108,6 +1163,9 @@ public class EdgeConvertGUI {
       }
    }
    
+   /*
+      The radio Button Listener class for the GUI
+   */
    class EdgeRadioButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent ae) {
          for (int i = 0; i < jrbDataType.length; i++) {
@@ -1129,6 +1187,9 @@ public class EdgeConvertGUI {
       }
    }
    
+   /*
+      The Window Listener class for the GUI
+   */
    class EdgeWindowListener implements WindowListener {
       public void windowActivated(WindowEvent we) {}
       public void windowClosed(WindowEvent we) {}
@@ -1137,6 +1198,9 @@ public class EdgeConvertGUI {
       public void windowIconified(WindowEvent we) {}
       public void windowOpened(WindowEvent we) {}
       
+      /*
+         Method which handles a window closing event (user exits program)
+      */
       public void windowClosing(WindowEvent we) {
          if (!dataSaved) {
             int answer = JOptionPane.showOptionDialog(null,
@@ -1184,6 +1248,9 @@ public class EdgeConvertGUI {
       }
    }
 
+   /*
+      Menu Listener class which handles menu listener actions
+   */
    class EdgeMenuListener implements ActionListener {
       public void actionPerformed(ActionEvent ae) {
          int returnVal;

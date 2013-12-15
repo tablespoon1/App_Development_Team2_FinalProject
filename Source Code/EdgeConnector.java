@@ -1,13 +1,21 @@
 import java.util.StringTokenizer;
 
+/*
+ *  Class which handles identifying and relating relations (connectons)
+ *  between various tables as they ar read in
+ */
 public class EdgeConnector {
    private int numConnector, endPoint1, endPoint2;
    private String endStyle1, endStyle2;
    private boolean isEP1Field, isEP2Field, isEP1Table, isEP2Table;
       
    /* 
-      Class which handles identifying and converting relations between tables to appropriate output format
-   */
+    *  Constructor accepts an input string containing all necessary parts
+    *  of the connection, separating by the delimeter character for
+    *  easy tokenizing
+    *  
+    *  @param inputString Deliminated String of inputs
+    */
    public EdgeConnector(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numConnector = Integer.parseInt(st.nextToken());
@@ -21,6 +29,9 @@ public class EdgeConnector {
       isEP2Table = false;
    }
    
+/**
+   Getters and Setters
+*/
    public int getNumConnector() {
       return numConnector;
    }
@@ -40,6 +51,7 @@ public class EdgeConnector {
    public String getEndStyle2() {
       return endStyle2;
    }
+   
    public boolean getIsEP1Field() {
       return isEP1Field;
    }
@@ -47,11 +59,11 @@ public class EdgeConnector {
    public boolean getIsEP2Field() {
       return isEP2Field;
    }
-
+   
    public boolean getIsEP1Table() {
       return isEP1Table;
    }
-
+   
    public boolean getIsEP2Table() {
       return isEP2Table;
    }
@@ -59,15 +71,15 @@ public class EdgeConnector {
    public void setIsEP1Field(boolean value) {
       isEP1Field = value;
    }
-   
+    
    public void setIsEP2Field(boolean value) {
       isEP2Field = value;
    }
-
+   
    public void setIsEP1Table(boolean value) {
       isEP1Table = value;
    }
-
+   
    public void setIsEP2Table(boolean value) {
       isEP2Table = value;
    }

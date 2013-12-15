@@ -2,6 +2,11 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
+/*
+ *  Class which handles the parsing in of the input file
+ *  and converting it to a standard fromat for convsersion
+ *  to an output format.
+ */
 public class EdgeConvertFileParser {
    //private String filename = "test.edg";
    private File parseFile;
@@ -26,6 +31,11 @@ public class EdgeConvertFileParser {
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
    public static final String DELIM = "|";
    
+   /*
+    *  Conctructor initializes attributes
+    *  
+    *  @param contructorFile The input file
+    */
    public EdgeConvertFileParser(File constructorFile) {
       numFigure = 0;
       numConnector = 0;
@@ -38,7 +48,13 @@ public class EdgeConvertFileParser {
       numLine = 0;
       this.openFile(parseFile);
    }
-
+   
+   /*
+    *  Method which handles the parsing of the file, reads line
+    *  by line, identifying different parts of the database
+    *  and sending tables, fields and connectors to be stored
+    *  in their respective classes.
+    */
    public void parseEdgeFile() throws IOException {
       while ((currentLine = br.readLine()) != null) {
          currentLine = currentLine.trim();
@@ -123,11 +139,18 @@ public class EdgeConvertFileParser {
                currentLine = br.readLine().trim();
             } while (!currentLine.equals("}")); // this is the end of a Connector entry
             
+            // Add this connection to temporary array of connections
             alConnectors.add(new EdgeConnector(numConnector + DELIM + endPoint1 + DELIM + endPoint2 + DELIM + endStyle1 + DELIM + endStyle2));
          } // if("Connector")
       } // while()
    } // parseEdgeFile()
    
+   /*
+    *  Method which resolves relations (Connectors) between two tables, parses
+    *  the nature of the relation and stores it. Also catches composite attributes
+    *  (connections between two attributes) and many-to-many relationship between
+    *  tables and displays the appropriate warning.
+    */
    private void resolveConnectors() { //Identify nature of Connector endpoints
       int endPoint1, endPoint2;
       int fieldIndex = 0, table1Index = 0, table2Index = 0;
@@ -191,6 +214,10 @@ public class EdgeConvertFileParser {
       } // connectors for() loop
    } // resolveConnectors()
    
+   /*
+    *  Method which parses in a saved file (.sav) and converts it
+    *  back to the standard format it was originally created from
+    */
    public void parseSaveFile() throws IOException { //this method is fucked
       StringTokenizer stTables, stNatFields, stRelFields, stNatRelFields, stField;
       EdgeTable tempTable;
@@ -251,7 +278,11 @@ public class EdgeConvertFileParser {
       }
    } // parseSaveFile()
 
-   private void makeArrays() { //convert ArrayList objects into arrays of the appropriate Class type
+   /*
+    *  Method which converts temporary arrayLists of fields, tables and connectors
+    *  into arrays of the appropriate class type.   
+    */
+   private void makeArrays() { 
       if (alTables != null) {
          tables = (EdgeTable[])alTables.toArray(new EdgeTable[alTables.size()]);
       }
@@ -263,6 +294,13 @@ public class EdgeConvertFileParser {
       }
    }
    
+   /*
+    *  Method which compares one table name against all other parsed 
+    *  tables to see if it is a duplicate.
+    *  
+    *  @param testTableName The target table name
+    *  @return Whether the table shares a name with another
+    */
    private boolean isTableDup(String testTableName) {
       for (int i = 0; i < alTables.size(); i++) {
          EdgeTable tempTable = (EdgeTable)alTables.get(i);
@@ -273,14 +311,12 @@ public class EdgeConvertFileParser {
       return false;
    }
    
-   public EdgeTable[] getEdgeTables() {
-      return tables;
-   }
-   
-   public EdgeField[] getEdgeFields() {
-      return fields;
-   }
-   
+   /*
+    *  Method which reads in the input file, creating the buffered reader
+    *  and parsing the file.
+    *
+    *  @param inputFile file to be read
+    */
    public void openFile(File inputFile) {
       try {
          fr = new FileReader(inputFile);
@@ -312,4 +348,18 @@ public class EdgeConvertFileParser {
          System.exit(0);
       } // catch IOException
    } // openFile()
+   
+  /*
+    Getters and Setters
+  */
+  
+   public EdgeTable[] getEdgeTables() {
+      return tables;
+   }
+   
+   public EdgeField[] getEdgeFields() {
+      return fields;
+   }
+   
+   
 } // EdgeConvertFileHandler

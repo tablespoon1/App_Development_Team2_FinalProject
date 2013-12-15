@@ -1,5 +1,8 @@
 import java.util.StringTokenizer;
 
+/*
+   Class which stores a Filed of an input file in deliminated, standard format
+*/
 public class EdgeField {
    private int numFigure, tableID, tableBound, fieldBound, dataType, varcharValue;
    private String name, defaultValue;
@@ -7,6 +10,12 @@ public class EdgeField {
    private static String[] strDataType = {"Varchar", "Boolean", "Integer", "Double"};
    public static final int VARCHAR_DEFAULT_LENGTH = 1;
    
+   /*
+      Constructor breaks the paramater into Tokens and
+      initializes attributes
+      
+      @param inputString Delimnated field information
+   */
    public EdgeField(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numFigure = Integer.parseInt(st.nextToken());
@@ -20,6 +29,10 @@ public class EdgeField {
       varcharValue = VARCHAR_DEFAULT_LENGTH;
       dataType = 0;
    }
+   
+   /*
+      Getters and Setters
+   */
    
    public int getNumFigure() {
       return numFigure;
@@ -100,6 +113,10 @@ public class EdgeField {
       return strDataType;
    }
    
+   /*
+      toString method returns this field's information
+      in deliminated format
+   */
    public String toString() {
       return numFigure + EdgeConvertFileParser.DELIM +
       name + EdgeConvertFileParser.DELIM +

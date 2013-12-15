@@ -1,11 +1,20 @@
 import java.util.*;
 
+/*
+   Class which stores a Table of an input file in deliminated, standard format
+*/
 public class EdgeTable {
    private int numFigure;
    private String name;
    private ArrayList alRelatedTables, alNativeFields;
    private int[] relatedTables, relatedFields, nativeFields;
    
+   /*
+      Constructor breaks the paramater into Tokens and
+      initializes attributes
+      
+      @param inputString Delimnated table information
+   */
    public EdgeTable(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numFigure = Integer.parseInt(st.nextToken());
@@ -13,6 +22,10 @@ public class EdgeTable {
       alRelatedTables = new ArrayList();
       alNativeFields = new ArrayList();
    }
+   
+   /*
+      Getters and Setters
+   */
    
    public int getNumFigure() {
       return numFigure;
@@ -46,6 +59,12 @@ public class EdgeTable {
       alNativeFields.add(new Integer(value));
    }
 
+   /*
+      Method which moves a nativeField up one index (e.g. 2 to 1)
+      and moves the other field down one index (e.g. 1 to 2)
+      
+      @param index The index of the field in array nativeFields to move down
+   */
    public void moveFieldUp(int index) { //move the field closer to the beginning of the list
       if (index == 0) {
          return;
@@ -58,6 +77,12 @@ public class EdgeTable {
       relatedFields[index] = tempRelated; //copy saved element to target's original location
    }
    
+   /*
+      Method which moves a nativeField down one index (e.g. 1 to 2)
+      and moves the other field up one index (e.g. 2 to 1)
+      
+      @param index The index of the field in array nativeFields to move up
+   */
    public void moveFieldDown(int index) { //move the field closer to the end of the list
       if (index == (nativeFields.length - 1)) {
          return;
@@ -70,6 +95,10 @@ public class EdgeTable {
       relatedFields[index] = tempRelated; //copy saved element to target's original location
    }
 
+   /*
+      Method which converts temporary ArrayLists into arrays nativeFields,
+      temp and relatedFields
+   */
    public void makeArrays() { //convert the ArrayLists into int[]
       Integer[] temp;
       temp = (Integer[])alNativeFields.toArray(new Integer[alNativeFields.size()]);
@@ -89,7 +118,11 @@ public class EdgeTable {
          relatedFields[i] = 0;
       }
    }
-
+   
+   /*
+      toString returns table name, number, contents of
+      arrays nativeFields, relatedTables and relatedFields
+   */
    public String toString() {
       StringBuffer sb = new StringBuffer();
       sb.append("Table: " + numFigure + "\r\n");

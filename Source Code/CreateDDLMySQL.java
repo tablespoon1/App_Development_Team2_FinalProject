@@ -5,6 +5,10 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.*;
 
+/*
+ *  Class which converts the stored form of an imported database structure 
+ *  into an output in the MySQL format.
+ */
 public class CreateDDLMySQL extends ConvertCreateDDL {
 
    protected String databaseName;
@@ -12,15 +16,33 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
 
+   /*
+    * Public constructor accepts arrays of all Tables and Fields and
+    * passes them to it's superclass constructor.
+    *
+    * @param inputTables Array of class EdgeTable containing all tables
+    * @param inputFields Array of class EdgeField containing all fields
+    */
    public CreateDDLMySQL(EdgeTable[] inputTables, EdgeField[] inputFields) {
       super(inputTables, inputFields);
       sb = new StringBuffer();
    } //CreateDDLMySQL(EdgeTable[], EdgeField[])
    
+   
+   /*
+    *  Empty Constructor with empty args list allows output directory 
+    *  to be set before there are table and field objects   
+    */
    public CreateDDLMySQL() { //default constructor with empty arg list for to allow output dir to be set before there are table and field objects
       
    }
    
+   /*
+    * Method which creates the databases and tables for the MySQL
+    * output, processing tables, their fields and relations to
+    * each other and tranforming them into the appropporate
+    * MySQL statements.
+    */
    public void createDDL() {
       EdgeConvertGUI.setReadSuccess(true);
       databaseName = generateDatabaseName();
@@ -99,8 +121,15 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
          }
       }
    }
-
-   protected int convertStrBooleanToInt(String input) { //MySQL uses '1' and '0' for boolean types
+   
+   /*
+    *  Method which converts boolean 'true' and 'false' into '1' and '0', rexpectively.
+    *  MySQL uses '1' and '0' for boolean types.
+    *  
+    *  @param input Boolean in String form (True or False)
+    *  @return 1 for true, 0 for false
+    */
+   protected int convertStrBooleanToInt(String input) { 
       if (input.equals("true")) {
          return 1;
       } else {
@@ -108,9 +137,14 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       }
    }
    
+   /*
+    *  prompts user for database name for the output file
+    *  MySQL uses '1' and '0' for boolean types
+    *  
+    *  @return The user determined batabase name
+    */
    public String generateDatabaseName() { //prompts user for database name
       String dbNameDefault = "MySQLDB";
-      //String databaseName = "";
 
       do {
          databaseName = (String)JOptionPane.showInputDialog(
@@ -131,6 +165,10 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       } while (databaseName.equals(""));
       return databaseName;
    }
+   
+   /**
+      Getters and setters
+   */
    
    public String getDatabaseName() {
       return databaseName;
