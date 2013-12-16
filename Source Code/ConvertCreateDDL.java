@@ -5,6 +5,9 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.*;
 
+/*
+   Abstract class which every DDL definition class extends
+*/
 public abstract class ConvertCreateDDL {
    //static String[] products = {"MySQL"};
    protected EdgeTable[] tables; //master copy of EdgeTable objects
@@ -14,16 +17,28 @@ public abstract class ConvertCreateDDL {
    protected StringBuffer sb;
    protected int selected;
    
+   /*
+      Parameterized constructor instantiates tables and fileds arrays
+      and calls the initialize function
+   */
    public ConvertCreateDDL(EdgeTable[] tables, EdgeField[] fields) {
       this.tables = tables;
       this.fields = fields;
       initialize();
    } //ConvertCreateDDL(EdgeTable[], EdgeField[])
    
-   public ConvertCreateDDL() { //default constructor with empty arg list for to allow output dir to be set before there are table and field objects
+   /*
+      Default constructor with empty arg list for to allow output dir 
+      to be set before there are table and field objects
+   */
+   public ConvertCreateDDL() { //
       
    } //ConvertCreateDDL()
-
+   
+   /*
+      Initializes the StringBuffer and steps through
+      the array of tables, identofying all bound tables
+   */
    public void initialize() {
       numBoundTables = new int[tables.length];
       maxBound = 0;
@@ -44,6 +59,13 @@ public abstract class ConvertCreateDDL {
       }
    }
    
+   /*
+      Protected Method return the index of table array
+      which correpsonds to the given table num
+      
+      @param numFigure Number of the specified table
+      @return Index of given table in the tables array
+   */
    protected EdgeTable getTable(int numFigure) {
       for (int tIndex = 0; tIndex < tables.length; tIndex++) {
          if (numFigure == tables[tIndex].getNumFigure()) {
@@ -53,6 +75,13 @@ public abstract class ConvertCreateDDL {
       return null;
    }
    
+      /*
+      Protected Method return the index of field array
+      which correpsonds to the given table num
+      
+      @param numFigure Number of the table in which the specified field is found
+      @return Index of the specified field in the fields array
+   */
    protected EdgeField getField(int numFigure) {
       for (int fIndex = 0; fIndex < fields.length; fIndex++) {
          if (numFigure == fields[fIndex].getNumFigure()) {
@@ -61,6 +90,10 @@ public abstract class ConvertCreateDDL {
       }
       return null;
    }
+
+   /*
+      Abstracted getters and toString
+   */
 
    public abstract String getDatabaseName();
 
