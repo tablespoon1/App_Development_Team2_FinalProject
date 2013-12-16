@@ -138,14 +138,15 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
    }
    
    /*
-    *  prompts user for database name for the output file
-    *  MySQL uses '1' and '0' for boolean types
+    *  Prompts user for database name for the output file.
     *  
-    *  @return The user determined batabase name
+    *  @return The user determined database name
     */
    public String generateDatabaseName() { //prompts user for database name
       String dbNameDefault = "MySQLDB";
-
+      
+      return EdgeConvertGUI.promptDatabaseName(dbNameDefault);
+      /*
       do {
          databaseName = (String)JOptionPane.showInputDialog(
                        null,
@@ -164,6 +165,7 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
          }
       } while (databaseName.equals(""));
       return databaseName;
+      */
    }
    
    /**

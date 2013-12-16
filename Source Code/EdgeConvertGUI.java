@@ -759,6 +759,40 @@ public class EdgeConvertGUI {
    } //createDRScreen
    
    /*
+      REFACTORIZATION Moved JOptionPane functionality to GUI class
+      
+      A method which prompts the user to enter a name for the database,
+      besides the default
+      
+      @param name The default database name
+      @return The database file name
+   */
+   public static String promptDatabaseName(String name) {
+      String defaultName = name;
+      String databaseName = "";
+   
+         do {
+            databaseName = (String)JOptionPane.showInputDialog(
+                          null,
+                          "Enter the database name:",
+                          "Database Name",
+                          JOptionPane.PLAIN_MESSAGE,
+                          null,
+                          null,
+                          defaultName);
+            if (databaseName == null) {
+               setReadSuccess(false);
+               return "";
+            }
+            if (databaseName.equals("")) {
+               JOptionPane.showMessageDialog(null, "You must select a name for your database.");
+            }
+         } while (databaseName.equals(""));
+         return databaseName;
+   }
+
+   
+   /*
       Getters and Setters
    */
    
