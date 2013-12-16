@@ -1198,6 +1198,17 @@ public class EdgeConvertGUI {
    }
    
    /*
+      REFACTORIZATION
+      Method which accepts a message input and displays a
+      JOptionMessagePane with that message 
+      
+      @param message the message to display
+   */
+   public static void displayMessage(String message) {
+      JOptionPane.showMessageDialog(null, message);
+   }
+   
+   /*
       The radio Button Listener class for the GUI
    */
    class EdgeRadioButtonListener implements ActionListener {
