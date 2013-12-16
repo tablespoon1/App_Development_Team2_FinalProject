@@ -122,6 +122,11 @@ public class EdgeTable {
    /*
       toString returns table name, number, contents of
       arrays nativeFields, relatedTables and relatedFields
+      
+      @return table name, number, contents of
+              arrays nativeFields, relatedTables and relatedFields in
+              deliminated format
+
    */
    public String toString() {
       StringBuffer sb = new StringBuffer();

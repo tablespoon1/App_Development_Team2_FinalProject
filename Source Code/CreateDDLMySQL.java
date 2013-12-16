@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class CreateDDLMySQL extends ConvertCreateDDL {
 
-   protected String databaseName;
+   //protected String databaseName;
    //this array is for determining how MySQL refers to datatypes
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
@@ -45,10 +45,13 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
     */
    public void createDDL() {
       EdgeConvertGUI.setReadSuccess(true);
-      databaseName = generateDatabaseName();
+      String databaseName = generateDatabaseName();
       sb.append("CREATE DATABASE " + databaseName + ";\r\n");
       sb.append("USE " + databaseName + ";\r\n");
-      for (int boundCount = 0; boundCount <= maxBound; boundCount++) { //process tables in order from least dependent (least number of bound tables) to most dependent
+   }
+   
+   public void processBoundTables() {
+       for (int boundCount = 0; boundCount <= maxBound; boundCount++) { //process tables in order from least dependent (least number of bound tables) to most dependent
          for (int tableCount = 0; tableCount < numBoundTables.length; tableCount++) { //step through list of tables
             if (numBoundTables[tableCount] == boundCount) { //
                sb.append("CREATE TABLE " + tables[tableCount].getName() + " (\r\n");
@@ -120,10 +123,11 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
             }
          }
       }
+
    }
    
    /*
-    *  Method which converts boolean 'true' and 'false' into '1' and '0', rexpectively.
+    *  Method which converts boolean 'true' and 'false' into '1' and '0', respectively.
     *  MySQL uses '1' and '0' for boolean types.
     *  
     *  @param input Boolean in String form (True or False)
@@ -172,9 +176,11 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       Getters and setters
    */
    
+   /* Unused Getter
    public String getDatabaseName() {
       return databaseName;
    }
+   */
    
    public String getProductName() {
       return "MySQL";

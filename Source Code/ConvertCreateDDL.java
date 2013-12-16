@@ -95,7 +95,8 @@ public abstract class ConvertCreateDDL {
       Abstracted getters and toString
    */
 
-   public abstract String getDatabaseName();
+  // unused getter
+  // public abstract String getDatabaseName();
 
    public abstract String getProductName();
    
