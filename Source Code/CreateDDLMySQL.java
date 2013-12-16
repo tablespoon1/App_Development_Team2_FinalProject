@@ -48,9 +48,14 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       String databaseName = generateDatabaseName();
       sb.append("CREATE DATABASE " + databaseName + ";\r\n");
       sb.append("USE " + databaseName + ";\r\n");
+      processTables();
    }
    
-   public void processBoundTables() {
+   /*
+      Method which processes tables one by one for
+      converstion into SQL statements. 
+   */
+   protected void processTables() {
        for (int boundCount = 0; boundCount <= maxBound; boundCount++) { //process tables in order from least dependent (least number of bound tables) to most dependent
          for (int tableCount = 0; tableCount < numBoundTables.length; tableCount++) { //step through list of tables
             if (numBoundTables[tableCount] == boundCount) { //
