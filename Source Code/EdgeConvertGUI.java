@@ -127,7 +127,7 @@ public class EdgeConvertGUI {
       jmDTFile = new JMenu("File");
       jmDTFile.setMnemonic(KeyEvent.VK_F);
       jmbDTMenuBar.add(jmDTFile);
-      jmiDTOpenEdge = new JMenuItem("Open Edge File");
+      jmiDTOpenEdge = new JMenuItem("Open Database File");
       jmiDTOpenEdge.setMnemonic(KeyEvent.VK_E);
       jmiDTOpenEdge.addActionListener(menuListener);
       jmiDTOpenSave = new JMenuItem("Open Save File");
