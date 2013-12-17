@@ -15,6 +15,12 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
    //this array is for determining how MySQL refers to datatypes
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
+   
+   protected int[] nativeFields;
+   protected int[] relatedFields;
+   protected boolean[] primaryKey;
+   protected int numPrimaryKey;
+   protected int numForeignKey;
 
    /*
     * Public constructor accepts arrays of all Tables and Fields and
@@ -48,6 +54,7 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       String databaseName = generateDatabaseName();
       sb.append("CREATE DATABASE " + databaseName + ";\r\n");
       sb.append("USE " + databaseName + ";\r\n");
+      
       processTables();
    }
    
@@ -60,11 +67,15 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
          for (int tableCount = 0; tableCount < numBoundTables.length; tableCount++) { //step through list of tables
             if (numBoundTables[tableCount] == boundCount) { //
                sb.append("CREATE TABLE " + tables[tableCount].getName() + " (\r\n");
-               int[] nativeFields = tables[tableCount].getNativeFieldsArray();
-               int[] relatedFields = tables[tableCount].getRelatedFieldsArray();
-               boolean[] primaryKey = new boolean[nativeFields.length];
-               int numPrimaryKey = 0;
-               int numForeignKey = 0;
+               
+               nativeFields = tables[tableCount].getNativeFieldsArray();
+               relatedFields = tables[tableCount].getRelatedFieldsArray();
+               primaryKey = new boolean[nativeFields.length];
+               numPrimaryKey = 0;
+               numForeignKey = 0;
+               
+               processFields();
+               /*
                for (int nativeFieldCount = 0; nativeFieldCount < nativeFields.length; nativeFieldCount++) { //print out the fields
                   EdgeField currentField = getField(nativeFields[nativeFieldCount]);
                   sb.append("\t" + currentField.getName() + " " + strDataType[currentField.getDataType()]);
@@ -91,8 +102,12 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
                      numForeignKey++;
                   }
                   sb.append(",\r\n"); //end of field
+                  
                }
+               */
                if (numPrimaryKey > 0) { //table has primary key(s)
+                  processPrimaryKeys(tableCount);
+                  /*
                   sb.append("CONSTRAINT " + tables[tableCount].getName() + "_PK PRIMARY KEY (");
                   for (int i = 0; i < primaryKey.length; i++) {
                      if (primaryKey[i]) {
@@ -108,8 +123,11 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
                      sb.append(",");
                   }
                   sb.append("\r\n");
+                  */
                }
                if (numForeignKey > 0) { //table has foreign keys
+                  processForeignKeys(tableCount);
+                  /*
                   int currentFK = 1;
                   for (int i = 0; i < relatedFields.length; i++) {
                      if (relatedFields[i] != 0) {
@@ -123,13 +141,92 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
                      }
                   }
                   sb.append("\r\n");
+                  */
                }
                sb.append(");\r\n\r\n"); //end of table
             }
          }
       }
 
-   }
+   } // processTables()
+   
+   /*
+      Proccesses all Fields into appropriate SQL statements
+   */
+   protected void processFields() {
+      for (int nativeFieldCount = 0; nativeFieldCount < nativeFields.length; nativeFieldCount++) { //print out the fields
+         EdgeField currentField = getField(nativeFields[nativeFieldCount]);
+         sb.append("\t" + currentField.getName() + " " + strDataType[currentField.getDataType()]);
+         if (currentField.getDataType() == 0) { //varchar
+            sb.append("(" + currentField.getVarcharValue() + ")"); //append varchar length in () if data type is varchar
+         }
+         if (currentField.getDisallowNull()) {
+            sb.append(" NOT NULL");
+         }
+         if (!currentField.getDefaultValue().equals("")) {
+            if (currentField.getDataType() == 1) { //boolean data type
+               sb.append(" DEFAULT " + convertStrBooleanToInt(currentField.getDefaultValue()));
+            } else { //any other data type
+               sb.append(" DEFAULT " + currentField.getDefaultValue());
+            }
+         }
+         if (currentField.getIsPrimaryKey()) {
+            primaryKey[nativeFieldCount] = true;
+            numPrimaryKey++;
+         } else {
+            primaryKey[nativeFieldCount] = false;
+         }
+         if (currentField.getFieldBound() != 0) {
+            numForeignKey++;
+         }
+         sb.append(",\r\n"); //end of field
+      }
+   } // processFields()
+   
+   /*
+      Proccesses Primary Keys into approproate SQL statements
+      
+      @param thisTable the current table index
+   */
+   protected void processPrimaryKeys(int thisTable) {
+      sb.append("CONSTRAINT " + tables[thisTable].getName() + "_PK PRIMARY KEY (");
+      for (int i = 0; i < primaryKey.length; i++) {
+         if (primaryKey[i]) {
+            sb.append(getField(nativeFields[i]).getName());
+            numPrimaryKey--;
+            if (numPrimaryKey > 0) {
+               sb.append(", ");
+            }
+         }
+      }
+      sb.append(")");
+      if (numForeignKey > 0) {
+         sb.append(",");
+      }
+      sb.append("\r\n");
+   } //processPrimaryKeys()
+   
+
+   /*
+      Processes Foreign Keys into appropriate SQL statements
+      
+      @param thisTable the current table index
+   */
+   protected void processForeignKeys(int thisTable) {
+      int currentFK = 1;
+      for (int i = 0; i < relatedFields.length; i++) {
+         if (relatedFields[i] != 0) {
+            sb.append("CONSTRAINT " + tables[thisTable].getName() + "_FK" + currentFK +
+                     " FOREIGN KEY(" + getField(nativeFields[i]).getName() + ") REFERENCES " +
+                     getTable(getField(nativeFields[i]).getTableBound()).getName() + "(" + getField(relatedFields[i]).getName() + ")");
+            if (currentFK < numForeignKey) {
+               sb.append(",\r\n");
+            }
+            currentFK++;
+         }
+      } // end for loop
+      sb.append("\r\n");
+   } //processForeignKeys()
    
    /*
     *  Method which converts boolean 'true' and 'false' into '1' and '0', respectively.
