@@ -29,6 +29,7 @@ public class EdgeConvertFileParser {
    private String endStyle1, endStyle2;
    public static final String EDGE_ID = "EDGE Diagram File"; //first line of .edg files should be this
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
+   public static final String XML_ID = "<?xml"; //first line of XML files should be this
    public static final String DELIM = "|";
    
    /*
@@ -220,6 +221,11 @@ public class EdgeConvertFileParser {
       } // connectors for() loop
    } // resolveConnectors()
    
+   //method to parse XML files
+   public void parseXMLFile() throws IOException {
+      
+   }
+   
    /*
     *  Method which parses in a saved file (.sav) and converts it
     *  back to the standard format it was originally created from
@@ -348,11 +354,9 @@ public class EdgeConvertFileParser {
       } // try
       catch (FileNotFoundException fnfe) {
          System.out.println("Cannot find \"" + inputFile.getName() + "\".");
-         System.exit(0);
       } // catch FileNotFoundException
       catch (IOException ioe) {
          System.out.println(ioe);
-         System.exit(0);
       } // catch IOException
    } // openFile()
    
