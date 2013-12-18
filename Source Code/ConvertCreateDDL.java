@@ -90,18 +90,21 @@ public abstract class ConvertCreateDDL {
       }
       return null;
    }
-
+   
    /*
-      Abstracted getters and toString
+      Abstracted createDDL, toString and getters
    */
 
-  // unused getter
-  // public abstract String getDatabaseName();
-
-   public abstract String getProductName();
+   public abstract String getDatabaseName();
    
-   public abstract String getSQLString();
+   public abstract String getStatementsString();
+   
+   public abstract String generateDatabaseName();
    
    public abstract void createDDL();
+   
+   public abstract String getProductName();
+   
+   public abstract String getOutputFileType();
    
 }//ConvertCreateDDL

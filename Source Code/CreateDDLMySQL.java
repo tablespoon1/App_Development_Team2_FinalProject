@@ -15,6 +15,7 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
    //this array is for determining how MySQL refers to datatypes
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
+   protected String databaseName;
    
    protected int[] nativeFields;
    protected int[] relatedFields;
@@ -51,7 +52,7 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
     */
    public void createDDL() {
       EdgeConvertGUI.setReadSuccess(true);
-      String databaseName = generateDatabaseName();
+      databaseName = generateDatabaseName();
       sb.append("CREATE DATABASE " + databaseName + ";\r\n");
       sb.append("USE " + databaseName + ";\r\n");
       
@@ -278,19 +279,25 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
       Getters and setters
    */
    
-   /* Unused Getter
+
    public String getDatabaseName() {
       return databaseName;
    }
-   */
+   
    
    public String getProductName() {
       return "MySQL";
    }
+   
+    public String getOutputFileType() {
+      return ".sql";
+   }
 
-   public String getSQLString() {
+   public String getStatementsString() {
       createDDL();
       return sb.toString();
    }
+   
+  
    
 }//ConvertCreateDDL

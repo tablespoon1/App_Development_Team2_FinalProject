@@ -24,8 +24,9 @@ public class EdgeConvertGUI {
    private static ExampleFileFilter effEdge, effSave, effClass;
    private File parseFile, saveFile, outputFile, outputDir, outputDirOld;
    private String truncatedFilename;
-   private String sqlString;
+   private String databaseString;
    private String databaseName;
+   private String outputFileType;
    EdgeMenuListener menuListener;
    EdgeRadioButtonListener radioListener;
    EdgeWindowListener edgeWindowListener;
@@ -1115,9 +1116,9 @@ public class EdgeConvertGUI {
    /* 
       Prompt user to select output file from precomposed list of available CreateDDL classes 
     */
-   private String getSQLStatements() {
-//       System.out.println("getSQLStatements()");
-      String strSQLString = "";
+   private String getStatements() {
+//       System.out.println("getStatements()");
+      String strStatementsString = "";
       String response = (String)JOptionPane.showInputDialog(
                     null,
                     "Select a product:",
@@ -1142,10 +1143,12 @@ public class EdgeConvertGUI {
 
       try { // 
          Class selectedSubclass = objSubclasses[selected].getClass();
-         Method getSQLString = selectedSubclass.getMethod("getSQLString", null);
+         Method getStatementsString = selectedSubclass.getMethod("getStatementsString", null);
          Method getDatabaseName = selectedSubclass.getMethod("getDatabaseName", null);
-         strSQLString = (String)getSQLString.invoke(objSubclasses[selected], null);
+         Method getOutputFileType = selectedSubclass.getMethod("getOutputFileType", null);
+         strStatementsString = (String)getStatementsString.invoke(objSubclasses[selected], null);
          databaseName = (String)getDatabaseName.invoke(objSubclasses[selected], null);
+         outputFileType = (String)getOutputFileType.invoke(objSubclasses[selected], null);
       } catch (IllegalAccessException iae) {
          iae.printStackTrace();
       } catch (NoSuchMethodException nsme) {
@@ -1154,22 +1157,22 @@ public class EdgeConvertGUI {
          ite.printStackTrace();
       }
 
-      return strSQLString;
+      return strStatementsString;
    }
 
    /*
-      Method which write the SQL statements to the
+      Method which writes the Database creation statements to the
       output file.
       
-      @param output The SQL statement 
+      @param output The Database statement(s) 
    */
-   private void writeSQL(String output) {
+   private void writeDBStatementsToFile(String output, String fileType) {
       jfcEdge.resetChoosableFileFilters();
       String str;
       if (parseFile != null) {
-         outputFile = new File(parseFile.getAbsolutePath().substring(0, (parseFile.getAbsolutePath().lastIndexOf(File.separator) + 1)) + databaseName + ".sql");
+         outputFile = new File(parseFile.getAbsolutePath().substring(0, (parseFile.getAbsolutePath().lastIndexOf(File.separator) + 1)) + databaseName + fileType);
       } else {
-         outputFile = new File(saveFile.getAbsolutePath().substring(0, (saveFile.getAbsolutePath().lastIndexOf(File.separator) + 1)) + databaseName + ".sql");
+         outputFile = new File(saveFile.getAbsolutePath().substring(0, (saveFile.getAbsolutePath().lastIndexOf(File.separator) + 1)) + databaseName + fileType);
       }
       if (databaseName.equals("")) {
          return;
@@ -1285,11 +1288,11 @@ public class EdgeConvertGUI {
          }
          getOutputClasses(); //in case outputDir was set before a file was loaded and EdgeTable/EdgeField objects created
          
-         sqlString = getSQLStatements();
-         if (sqlString.equals(EdgeConvertGUI.CANCELLED)) {
+         databaseString = getStatements();
+         if (databaseString.equals(EdgeConvertGUI.CANCELLED)) {
             return;
          }
-         writeSQL(sqlString);
+         writeDBStatementsToFile(databaseString, outputFileType);
       }
    }
 
