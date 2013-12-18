@@ -221,7 +221,9 @@ public class EdgeConvertFileParser {
       } // connectors for() loop
    } // resolveConnectors()
    
-   //method to parse XML files
+   /*
+      Method which parses XML files (does not currently work)
+   */
    public void parseXMLFile() throws IOException {
       String tablename = "";
       String type = "";
