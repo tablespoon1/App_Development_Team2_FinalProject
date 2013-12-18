@@ -20,5 +20,17 @@
 		<param name="Name" value="Refactorization">
 		<param name="Local" value="Refactorization.htm">
 		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="File Menu">
+		<param name="Local" value="File Menu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Options Menu">
+		<param name="Local" value="Options Menu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="How to Use">
+		<param name="Local" value="How to Use.htm">
+		</OBJECT>
 </UL>
 </BODY></HTML>
