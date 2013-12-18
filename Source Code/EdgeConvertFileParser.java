@@ -223,8 +223,90 @@ public class EdgeConvertFileParser {
    
    //method to parse XML files
    public void parseXMLFile() throws IOException {
-      
-   }
+      String tablename = "";
+		String type = "";
+		String size = "";
+		String fixed = "";
+		String pkey = "";
+		String isNull = "";
+		String autoInc = "";
+		String fieldname = "";
+		while((currentLine = br.readLine()) != null)
+		{
+			currentLine = br.readLine().trim();
+			if (currentLine.startsWith("<diagram>")) //this is a diagram
+         {
+            currentLine = br.readLine().trim();
+            if (currentLine.startsWith("<tables>")) //all table nodes will be in here
+            {
+               currentLine = br.readLine().trim();
+               if (currentLine.startsWith("<table>")) //start of a table node
+               {
+					   while (currentLine.contains("</table>") == false)
+   					{
+   	               currentLine = br.readLine().trim(); //this line will be <name>
+   								  
+      	            //remove tags, just get name of the table
+      	            tablename = currentLine.substring(currentLine.indexOf("<name>") + 6, 
+      					currentLine.lastIndexOf("</name>"));
+      											
+      	            currentLine = br.readLine().trim();
+      	            if (currentLine.startsWith("<fields>"))
+      	            {
+      						//read until we reach the end of the <fields> node
+      						while (currentLine.contains("</fields>") == false)
+      						{
+      		                currentLine = br.readLine(); //goes to next line, reads the <field> node
+      											
+      							 if (currentLine.contains("type="))
+      							 {
+      								   type = currentLine.substring(currentLine.indexOf("type=") + 6, 
+      											 currentLine.indexOf(" ", currentLine.indexOf("type=")) - 1);
+      							 }
+      							 if (currentLine.contains("size="))
+      							 {
+      		                     size = currentLine.substring(currentLine.indexOf("size=") + 6, 
+      											 currentLine.indexOf(" ", currentLine.indexOf("size=")) - 1);
+      							 }
+      							 if (currentLine.contains("fixed="))
+      							 {
+      		                    fixed = currentLine.substring(currentLine.indexOf("fixed=") + 7, 
+      											 currentLine.indexOf(" ", currentLine.indexOf("fixed=")) - 1);
+      							 }
+      							 if (currentLine.contains("pkey="))
+      							 {
+      		                    pkey = currentLine.substring(currentLine.indexOf("pkey=") + 6, 
+      											currentLine.indexOf(" ", currentLine.indexOf("pkey=")) - 1);
+      							 }
+      							 if (currentLine.contains("null="))
+      							 {
+      		                    isNull = currentLine.substring(currentLine.indexOf("null=") + 6, 
+      											  currentLine.indexOf(" ", currentLine.indexOf("null=")) - 1);
+      							 }
+      							 if (currentLine.contains("autoincrement="))
+      							 {
+      								  autoInc = currentLine.substring(currentLine.indexOf("autoincrement=") + 15, 
+      												currentLine.indexOf(">") - 1);
+      							 }
+      											
+   							     //add this attribute to array, loop until end of <fields> node
+   											
+   						   }//while in <fields> node
+                     }//if <fields> node
+						}//while in <table
+               }//if <table> node
+            }//if <tables> node
+            
+            //here we would need to do the same thing as above, only for relationships rather than tables
+            
+         }//if <diagram>
+         
+         /*    once we have all the fields we are interested in, we would need to add them to
+          *    arrays with values seperated by delimiters(similar to what is done in EdgeTable 
+          *    and EdgeField)
+          */
+		}//while !null
+    }
    
    /*
     *  Method which parses in a saved file (.sav) and converts it
@@ -346,7 +428,14 @@ public class EdgeConvertFileParser {
                this.parseSaveFile(); //parse the file
                br.close();
                this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class type
-            } else { //the file chosen is something else
+            } 
+            else if (currentLine.startsWith(XML_ID))
+            {
+                this.parseXMLFile();
+                br.close();
+                this.makeArrays();
+            }
+            else { //the file chosen is something else
                EdgeConvertGUI.displayMessage("Unrecognized file format");
                //JOptionPane.showMessageDialog(null, "Unrecognized file format");
             }
