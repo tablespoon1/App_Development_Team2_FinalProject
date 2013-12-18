@@ -11,11 +11,9 @@ import java.util.*;
  */
 public class CreateDDLMySQL extends ConvertCreateDDL {
 
-   //protected String databaseName;
    //this array is for determining how MySQL refers to datatypes
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
-   protected String databaseName;
    
    protected int[] nativeFields;
    protected int[] relatedFields;
@@ -292,12 +290,10 @@ public class CreateDDLMySQL extends ConvertCreateDDL {
     public String getOutputFileType() {
       return ".sql";
    }
-
+   
    public String getStatementsString() {
-      createDDL();
-      return sb.toString();
+     createDDL();
+     return sb.toString();
    }
-   
   
-   
 }//ConvertCreateDDL

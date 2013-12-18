@@ -9,7 +9,7 @@ import java.util.*;
    Abstract class which every DDL definition class extends
 */
 public abstract class ConvertCreateDDL {
-   //static String[] products = {"MySQL"};
+   protected String databaseName;
    protected EdgeTable[] tables; //master copy of EdgeTable objects
    protected EdgeField[] fields; //master copy of EdgeField objects
    protected int[] numBoundTables;
@@ -91,15 +91,15 @@ public abstract class ConvertCreateDDL {
       return null;
    }
    
+
    /*
       Abstracted createDDL, toString and getters
    */
-
    public abstract String getDatabaseName();
    
-   public abstract String getStatementsString();
-   
    public abstract String generateDatabaseName();
+   
+   public abstract String getStatementsString();
    
    public abstract void createDDL();
    

@@ -6,14 +6,14 @@ import java.io.*;
 import java.util.*;
 
 /*
- *  Class which converts the stored form of an imported database structure 
- *  into an output in the MySQL format.
+ *  Class which demonstrates the extensibility 
+    of the ConvertCreateDDL class. Only meant for 
+    demonstration/testing, NOT MEANT for 
+    distribution!
  */
 public class CreateDDLExample extends ConvertCreateDDL {
 
-   //protected String databaseName;
    //this array is for determining how MySQL refers to datatypes
-   protected String databaseName;
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
    
@@ -45,15 +45,28 @@ public class CreateDDLExample extends ConvertCreateDDL {
    }
    
    /*
-    * Method which creates the databases and tables for the MySQL
-    * output, processing tables, their fields and relations to
-    * each other and tranforming them into the appropporate
-    * MySQL statements.
+    * Method which simply outputs the parsed input
+      to a .txt file by default.
+      
+      IMPORTANT NOTE: Only meant for testing, NOT final
+      product distribution!
     */
    public void createDDL() {
       EdgeConvertGUI.setReadSuccess(true);
       databaseName = generateDatabaseName();
-      sb.append("This is just a test file! And this is test output!");
+      
+      sb.append("This is sample output!\r\n");
+      sb.append("Number of tables: "+tables.length+"\r\n");
+      sb.append("Number of fields: "+fields.length+"\r\n\r\n");
+      
+      sb.append("Outputting Tables:\r\n");
+      for (int i=0; i<tables.length; i++){
+         sb.append(tables[i].toString() +"\r\n");
+      }
+      sb.append("Outputting Fields:\r\n");
+      for (int i=0; i<fields.length; i++){
+         sb.append(fields[i].toString() +"\r\n");
+      }
    }
    
 
@@ -100,16 +113,16 @@ public class CreateDDLExample extends ConvertCreateDDL {
 
    
    public String getProductName() {
-      return "Example Output Format";
-   }
-
-   public String getStatementsString() {
-      createDDL();
-      return sb.toString();
+      return "Example Output";
    }
    
    public String getOutputFileType() {
       return ".txt";
+   }
+   
+   public String getStatementsString() {
+     createDDL();
+     return sb.toString();
    }
    
 }//ConvertCreateDDL
