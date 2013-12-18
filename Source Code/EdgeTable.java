@@ -1,7 +1,3 @@
-package DatabaseComponents;
-
-//import MainFiles.*;
-
 import java.util.*;
 
 /*
@@ -20,11 +16,11 @@ public class EdgeTable {
       @param inputString Delimnated table information
    */
    public EdgeTable(String inputString) {
-      //StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
-     // numFigure = Integer.parseInt(st.nextToken());
-      //name = st.nextToken();
-      //alRelatedTables = new ArrayList();
-      //alNativeFields = new ArrayList();
+      StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
+      numFigure = Integer.parseInt(st.nextToken());
+      name = st.nextToken();
+      alRelatedTables = new ArrayList();
+      alNativeFields = new ArrayList();
    }
    
    /*
@@ -132,7 +128,6 @@ public class EdgeTable {
               deliminated format
 
    */
-   /*
    public String toString() {
       StringBuffer sb = new StringBuffer();
       sb.append("Table: " + numFigure + "\r\n");
@@ -163,5 +158,4 @@ public class EdgeTable {
       
       return sb.toString();
    }
-   */
 }

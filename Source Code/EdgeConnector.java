@@ -1,5 +1,3 @@
-package DatabaseComponents;
-
 import java.util.StringTokenizer;
 
 /*

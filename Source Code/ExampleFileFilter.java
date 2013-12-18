@@ -37,7 +37,6 @@
  * @(#)ExampleFileFilter.java	1.14 03/01/23
  */
 
-package MainFiles;
 
 import java.io.File;
 import java.util.Hashtable;

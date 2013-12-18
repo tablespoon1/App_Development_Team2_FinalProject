@@ -1,5 +1,3 @@
-package DatabaseComponents;
-
 import java.util.StringTokenizer;
 
 /*
@@ -119,7 +117,6 @@ public class EdgeField {
       toString method returns this field's information
       in deliminated format
    */
-   
    public String toString() {
       return numFigure + EdgeConvertFileParser.DELIM +
       name + EdgeConvertFileParser.DELIM +
@@ -132,5 +129,4 @@ public class EdgeField {
       disallowNull + EdgeConvertFileParser.DELIM +
       defaultValue;
    }
-   
 }

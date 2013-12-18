@@ -1,7 +1,3 @@
-package DDLDefinitionFiles;
-
-import DatabaseComponents.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
