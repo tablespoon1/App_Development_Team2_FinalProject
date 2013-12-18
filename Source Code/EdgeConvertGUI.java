@@ -1422,7 +1422,7 @@ public class EdgeConvertGUI {
          
          if ((ae.getSource() == jmiDTHelpSystem) || (ae.getSource() == jmiDTHelpSystem)) {
             try {
-                Desktop.getDesktop().open( new File("help_system/help_demo_file.chm"));
+                Desktop.getDesktop().open( new File("help_system/AppDev Demo Help.chm"));
              }
             catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Cannot find Help Demo .CHM file.");
